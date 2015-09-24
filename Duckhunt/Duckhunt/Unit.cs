@@ -1,0 +1,6 @@
+﻿namespace Duckhunt
+{
+    class Unit
+    {
+    }
+}
