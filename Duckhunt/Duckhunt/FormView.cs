@@ -13,34 +13,30 @@ namespace Duckhunt
 {
     public partial class FormView : Form
     {
-        private int x;
-        private int y;
-        private double heading;
-        private int direction;
-        private int width = 30;
-        private int height = 30;
         private Stack<Point> clickStack;
         private Random rnd = new Random();
+        private GameController gameController;
+        private Graphics graphics;
+
+        public Graphics Graphics { get; set; }
 
         public FormView()
         {
             InitializeComponent();
 
-            heading = 1.5;
-            direction = 1;
-            x = 00;
-            y = 50;
+            Graphics = CreateGraphics();
+            //Graphics.DrawEllipse(Brushes.Blue, 50, 50, 30, 30);
 
             clickStack = new Stack<Point>();
-            
+
+            gameController = new GameController(this);
         }
 
         public void UpdateView()
         {
-            MoveUnit();
-            Console.WriteLine("UpdateView");
+            //MoveUnit();
 
-            if (clickStack.Count > 0)
+            /*if (clickStack.Count > 0)
             {
                 if (CheckClickCollision(clickStack.Pop()))
                 {
@@ -49,36 +45,14 @@ namespace Duckhunt
                     y = rnd.Next(1, (this.Size.Height - height * 2));
                     //remove moving object
                 }
-            }
+            }*/
 
             Invalidate();
             
         }
 
-        private void MoveUnit()
-        {
-            int windowHeight = this.Size.Height;
-            int windowWidth = this.Size.Width;
 
-            if ((x + width) >= windowWidth)
-            {
-                direction = -1;
-            }
-            else if (x <= 0)
-            {
-                direction = 1;
-            }
-
-            /*if((y + height) >= height)
-            {
-
-            }*/
-
-            x = x + (1 * direction);
-        }
-
-
-        private bool CheckClickCollision(Point location)
+        /*private bool CheckClickCollision(Point location)
         {
             bool collision = false;
 
@@ -88,12 +62,14 @@ namespace Duckhunt
             }
 
             return collision;
-        }
+        }*/
 
         private void Form_Paint(object sender, PaintEventArgs e)
-        {
-            Console.WriteLine("Paint");
-            e.Graphics.FillEllipse(Brushes.Blue, x, y, width, height);
+         {
+            //Console.WriteLine("fill graphics variable");
+          
+            //Graphics = e.Graphics;
+            //graphics.FillEllipse(Brushes.Blue, x, y, width, height);
         }
 
         private void Form_MouseClick(object sender, MouseEventArgs e)

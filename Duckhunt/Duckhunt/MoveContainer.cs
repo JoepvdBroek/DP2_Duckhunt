@@ -23,7 +23,7 @@ namespace Duckhunt
             }
         }
 
-        public void LoopBehaviours()
+        public void UpdateUnits()
         {
             foreach(MoveBehaviour mb in behaviourList)
             {

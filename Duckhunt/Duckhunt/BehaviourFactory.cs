@@ -22,7 +22,11 @@ namespace Duckhunt
 
         internal MoveBehaviour CreateMoveBehaviour(Duck duck)
         {
-            throw new NotImplementedException();
+            return new MoveBehaviour(duck);
+        }
+        internal DrawBehaviour CreateDrawBehaviour(Duck duck)
+        {
+            return new DrawBehaviour(duck);
         }
     }
 }

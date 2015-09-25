@@ -11,9 +11,10 @@ namespace Duckhunt
             this.unit = unit;
         }
 
-        internal void Update()
+        public void Update()
         {
-            throw new NotImplementedException();
+            unit.X = unit.X + (1 * unit.Direction);
+            //unit.Y = unit.Y + (1 * unit.Heading);
         }
     }
 }

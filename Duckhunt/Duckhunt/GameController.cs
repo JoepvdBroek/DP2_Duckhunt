@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,31 +13,35 @@ namespace Duckhunt
         private FormView formView;
         private UnitFactory unitFactory;
         private BehaviourFactory behaviourFactory;
-        private Thread thread;
+        private MoveContainer moveContainer;
+        private DrawContainer drawContainer;
 
         private bool running;
 
-        public GameController()
+        public GameController(FormView view)
         {
             unitFactory = UnitFactory.Instance;
             behaviourFactory = BehaviourFactory.Instance;
+            moveContainer = new MoveContainer();
+            drawContainer = new DrawContainer();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            formView = new FormView();
-            Application.Run(formView);
+            formView = view;
+
+            Unit firstUnit = new Duck(moveContainer, drawContainer, behaviourFactory);
 
             running = true;
-            thread = new Thread(new ThreadStart(Run));
-            thread.Start();
+            new Thread(new ThreadStart(Run)).Start();
+            
         }
 
         private void Run()
         {
             while (running)
             {
+                moveContainer.UpdateUnits();
+                drawContainer.UpdateUnits(formView.Graphics);
                 formView.UpdateView();
-                Thread.Sleep(50);
+                Thread.Sleep(1000);
             }
         }
     

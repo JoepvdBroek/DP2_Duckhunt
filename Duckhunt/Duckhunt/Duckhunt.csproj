@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="BehaviourFactory.cs" />
     <Compile Include="Container.cs" />
+    <Compile Include="DrawBehaviour.cs" />
+    <Compile Include="DrawContainer.cs" />
     <Compile Include="Duck.cs" />
     <Compile Include="FormView.cs">
       <SubType>Form</SubType>
