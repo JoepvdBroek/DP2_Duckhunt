@@ -18,24 +18,22 @@ namespace Duckhunt
         private GameController gameController;
         private Graphics graphics;
 
-        public Graphics Graphics { get; set; }
-
+        int x = 100;
+        int y = 100;
         public FormView()
         {
             InitializeComponent();
 
-            Graphics = CreateGraphics();
-            //Graphics.DrawEllipse(Brushes.Blue, 50, 50, 30, 30);
+            //Graphics = CreateGraphics();
+            graphics = canvas.CreateGraphics();
 
             clickStack = new Stack<Point>();
 
-            gameController = new GameController(this);
+            gameController = new GameController(this, graphics);
         }
 
         public void UpdateView()
         {
-            //MoveUnit();
-
             /*if (clickStack.Count > 0)
             {
                 if (CheckClickCollision(clickStack.Pop()))
@@ -47,7 +45,11 @@ namespace Duckhunt
                 }
             }*/
 
-            Invalidate();
+            x++;
+
+            Console.WriteLine("3: update view");
+            canvas.Invalidate();
+            //canvas.Update();
             
         }
 
@@ -64,20 +66,17 @@ namespace Duckhunt
             return collision;
         }*/
 
-        private void Form_Paint(object sender, PaintEventArgs e)
-         {
-            //Console.WriteLine("fill graphics variable");
-          
-            //Graphics = e.Graphics;
-            //graphics.FillEllipse(Brushes.Blue, x, y, width, height);
-        }
-
-        private void Form_MouseClick(object sender, MouseEventArgs e)
+        private void Canvas_MouseClick(object sender, MouseEventArgs e)
         {
             Console.WriteLine("click x: " + e.Location.X);
             Console.WriteLine("click y: " + e.Location.Y);
             clickStack.Push(e.Location);
             //click opslaan en in de loop uitlezen
+        }
+
+        private void FormView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            gameController.StopLoop();
         }
     }
 }

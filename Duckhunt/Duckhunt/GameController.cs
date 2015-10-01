@@ -15,19 +15,22 @@ namespace Duckhunt
         private BehaviourFactory behaviourFactory;
         private MoveContainer moveContainer;
         private DrawContainer drawContainer;
-
+        private Graphics graphics;
+        private Timer timer;
         private bool running;
 
-        public GameController(FormView view)
+        public GameController(FormView view, Graphics g)
         {
             unitFactory = UnitFactory.Instance;
             behaviourFactory = BehaviourFactory.Instance;
             moveContainer = new MoveContainer();
             drawContainer = new DrawContainer();
+            graphics = g;
+            timer = new Timer();
 
             formView = view;
 
-            Unit firstUnit = new Duck(moveContainer, drawContainer, behaviourFactory);
+            Unit firstUnit = new Duck(moveContainer, drawContainer, behaviourFactory, graphics);
 
             running = true;
             new Thread(new ThreadStart(Run)).Start();
@@ -39,10 +42,15 @@ namespace Duckhunt
             while (running)
             {
                 moveContainer.UpdateUnits();
-                drawContainer.UpdateUnits(formView.Graphics);
+                drawContainer.UpdateUnits(graphics);
                 formView.UpdateView();
-                Thread.Sleep(1000);
+                Thread.Sleep(40);
             }
+        }
+
+        public void StopLoop()
+        {
+            running = false;
         }
     
     }

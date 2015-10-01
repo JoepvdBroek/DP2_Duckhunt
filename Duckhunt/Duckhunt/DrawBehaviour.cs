@@ -20,7 +20,9 @@ namespace Duckhunt
         {
             if (g != null)
             {
-                g.DrawEllipse(Pens.Blue, unit.X, unit.Y, 30F, 30F);
+                Console.WriteLine("2: draw unit : x = " + unit.X + " y = " + unit.Y);
+                g.FillEllipse(Brushes.Blue, unit.X, unit.Y, 30F, 30F);
+                //margin = new Thickness();
             }
             
         }

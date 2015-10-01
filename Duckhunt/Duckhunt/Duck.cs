@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace Duckhunt
         private DrawContainer _drawContainer;
         private DrawBehaviour _drawBehaviour;
 
-        public Duck(MoveContainer mc, DrawContainer dc, BehaviourFactory bf)
+        public Duck(MoveContainer mc, DrawContainer dc, BehaviourFactory bf, Graphics g)
         {
             _moveContainer = mc;
             _drawContainer = dc;

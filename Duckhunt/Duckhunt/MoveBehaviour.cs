@@ -15,6 +15,8 @@ namespace Duckhunt
         {
             unit.X = unit.X + (1 * unit.Direction);
             //unit.Y = unit.Y + (1 * unit.Heading);
+
+            Console.WriteLine("1: move unit : x = " + unit.X + " y = " + unit.Y);
         }
     }
 }
