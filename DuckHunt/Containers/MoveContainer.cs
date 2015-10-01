@@ -1,33 +1,32 @@
-﻿using System;
+﻿using DuckHunt.Behaviours;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Duckhunt
+namespace DuckHunt.Containers
 {
     class MoveContainer : Container
     {
-        List<MoveBehaviour> behaviourList = new List<MoveBehaviour>();
-
         public void Add(MoveBehaviour _moveBehaviour)
         {
-            behaviourList.Add(_moveBehaviour);
+            behaviours.Add(_moveBehaviour);
         }
 
         public void Remove(MoveBehaviour _moveBehaviour)
         {
-            if (behaviourList.Contains(_moveBehaviour))
+            if (behaviours.Contains(_moveBehaviour))
             {
-                behaviourList.Remove(_moveBehaviour);
+                behaviours.Remove(_moveBehaviour);
             }
         }
 
-        public void UpdateUnits()
+        public void MoveUnits()
         {
-            foreach(MoveBehaviour mb in behaviourList)
+            foreach (Behaviour behavior in behaviours)
             {
-                mb.Update();
+                behavior.Behave();
             }
         }
     }

@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Duckhunt
+namespace DuckHunt
 {
     class Timer
-    {
+    { 
         [DllImport("kernel32.dll")]
         private static extern long GetTickCount();
 

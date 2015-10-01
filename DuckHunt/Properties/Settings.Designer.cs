@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Duckhunt.Properties
+namespace DuckHunt.Properties
 {
 
 
