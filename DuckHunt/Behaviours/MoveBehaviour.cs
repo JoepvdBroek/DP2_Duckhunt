@@ -11,13 +11,15 @@ namespace DuckHunt.Behaviours
             this.unit = unit;
         }
 
-        public void Behave()
+        public void Behave(float deltaTime)
         {
-            unit.x++;
+            //unit.x++;
+            unit.x += 0.20F * deltaTime;
             if (unit.x > 750)
             {
                 unit.x = -unit.size;
             }
+
         }
     }
 }

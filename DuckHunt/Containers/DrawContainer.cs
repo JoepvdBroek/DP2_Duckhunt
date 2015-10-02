@@ -22,11 +22,11 @@ namespace DuckHunt.Containers
             }
         }
 
-        public void DrawUnits()
+        public void DrawUnits(float deltaTime)
         {
             foreach(Behaviour behaviour in behaviours)
             {
-                behaviour.Behave();
+                behaviour.Behave(deltaTime);
             }
         }
     }

@@ -8,6 +8,6 @@ namespace DuckHunt.Behaviours
 {
     interface Behaviour
     {
-        void Behave();
+        void Behave(float deltaTime);
     }
 }

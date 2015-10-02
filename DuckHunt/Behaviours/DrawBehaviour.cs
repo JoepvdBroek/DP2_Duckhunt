@@ -12,7 +12,7 @@ namespace DuckHunt.Behaviours
             this.unit = unit;
         }
 
-        public void Behave()
+        public void Behave(float deltaTime)
         {
             if (unit.dispatcher.CheckAccess())
             {
