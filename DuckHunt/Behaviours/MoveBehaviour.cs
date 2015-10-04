@@ -14,7 +14,7 @@ namespace DuckHunt.Behaviours
         public void Behave(float deltaTime)
         {
             //unit.x++;
-            unit.x += 0.20F * deltaTime;
+            unit.x += (0.20F * deltaTime) * unit.velocity;
             if (unit.x > 750)
             {
                 unit.x = -unit.size;

@@ -14,7 +14,6 @@ namespace DuckHunt.Controllers
         protected LevelFactory levelFactory;
         public int id { get; set; }
         public Brush color { get; set; }
-        public MainWindow window { get; set; }
 
         //constructor for gameController
         public BaseLevelState(GameController gc)
@@ -36,7 +35,14 @@ namespace DuckHunt.Controllers
 
         public void Draw()
         {
-            window.Background = color;
+            if (gameController.dispatcher.CheckAccess())
+            {
+                gameController.window.Background = color;
+            }
+            else
+            {
+                gameController.dispatcher.Invoke(() => gameController.window.Background = color);
+            }
         }
 
         public void NextLevel()

@@ -74,9 +74,11 @@
     <Compile Include="Factories\BehaviourFactory.cs" />
     <Compile Include="Factories\LevelFactory.cs" />
     <Compile Include="Factories\UnitFactory.cs" />
+    <Compile Include="Levels\Level4.cs" />
     <Compile Include="Levels\Level1.cs" />
     <Compile Include="Levels\Level2.cs" />
     <Compile Include="Levels\Level3.cs" />
+    <Compile Include="Levels\Level5.cs" />
     <Compile Include="Models\Crow.cs" />
     <Compile Include="Models\Duck.cs" />
     <Compile Include="Models\Unit.cs" />

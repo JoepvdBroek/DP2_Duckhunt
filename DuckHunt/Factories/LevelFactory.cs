@@ -38,6 +38,10 @@ namespace DuckHunt.Factories
                     return new Level2();
                 case 2:
                     return new Level3();
+                case 3:
+                    return new Level4();
+                case 4:
+                    return new Level5();
                 default:
                     //finished
                     return null;
