@@ -14,6 +14,7 @@ namespace DuckHunt.Levels
         public Level5()
         {
             id = 5;
+            velocity = 1.8F;
             color = Brushes.Azure;
             levelFactory = LevelFactory.Instance;
         }

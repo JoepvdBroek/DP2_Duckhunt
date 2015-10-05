@@ -14,6 +14,7 @@ namespace DuckHunt.Controllers
         protected LevelFactory levelFactory;
         public int id { get; set; }
         public Brush color { get; set; }
+        public float velocity { get; set; }
 
         //constructor for gameController
         public BaseLevelState(GameController gc)
