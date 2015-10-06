@@ -69,11 +69,12 @@
     <Compile Include="Containers\Container.cs" />
     <Compile Include="Containers\DrawContainer.cs" />
     <Compile Include="Containers\MoveContainer.cs" />
-    <Compile Include="Controllers\BaseLevelState.cs" />
+    <Compile Include="Levels\BaseLevelState.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Factories\BehaviourFactory.cs" />
     <Compile Include="Factories\LevelFactory.cs" />
     <Compile Include="Factories\UnitFactory.cs" />
+    <Compile Include="Levels\GameLevel.cs" />
     <Compile Include="Levels\Level4.cs" />
     <Compile Include="Levels\Level1.cs" />
     <Compile Include="Levels\Level2.cs" />

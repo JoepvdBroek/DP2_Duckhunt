@@ -9,15 +9,24 @@ using System.Windows.Media;
 
 namespace DuckHunt.Levels
 {
-    class Level5 : BaseLevelState
+    class Level5 : BaseLevelState, GameLevel
     {
         public Level5()
         {
             id = 5;
             velocity = 1.8F;
             color = Brushes.Azure;
-            levelFactory = LevelFactory.Instance;
         }
-    
+
+        public static void AddLevelToFactory()
+        {
+            LevelFactory.Instance.addLevelToMap(new Level5());
+        }
+
+        BaseLevelState GameLevel.CreateInstance()
+        {
+            return new Level5();
+        }
+
     }
 }

@@ -97,17 +97,11 @@ namespace DuckHunt
         {
             running = false;
             Console.WriteLine("stop Game");
+            Environment.Exit(0);
         }
 
         public void gameLoop()
         {
-            //while (ducks.count > 0)
-            //{
-            //    foreach (duck d in ducks)
-            //    {
-            //        d.moveleft();
-            //    }
-            //}
             int counter = 0;
 
             float deltaTime = 1;
@@ -134,24 +128,6 @@ namespace DuckHunt
                 if(deltaTime > 0)
                     fps = 1000 / deltaTime;
             }
-
-            //while (running)
-            //{
-            //    //timer.Reset();
-            //    moveContainer.MoveUnits();
-            //    Thread.Sleep(8);
-            //    drawContainer.DrawUnits();
-
-            //    //while (timer.GetTicks() < 30) { ; }
-
-                
-
-            //    //try
-            //    //{
-            //    //    Thread.Sleep(8);
-            //    //}
-            //    //catch (Exception e) { }
-            //}
 
         }
 

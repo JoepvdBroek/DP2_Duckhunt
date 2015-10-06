@@ -1,22 +1,27 @@
 ﻿using DuckHunt.Controllers;
 using DuckHunt.Factories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace DuckHunt.Levels
 {
-    class Level1 : BaseLevelState
+    class Level1 : BaseLevelState , GameLevel
     {
         public Level1()
         {
             id = 1;
             velocity = 1.0F;
             color = Brushes.Yellow;
-            levelFactory = LevelFactory.Instance;
         }
+
+        public static void AddLevelToFactory()
+        {
+            LevelFactory.Instance.addLevelToMap(new Level1());
+        }
+
+        BaseLevelState GameLevel.CreateInstance()
+        {
+            return new Level1();
+        }
+
     }
 }

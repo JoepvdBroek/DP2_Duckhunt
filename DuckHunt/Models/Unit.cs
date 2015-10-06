@@ -54,6 +54,10 @@ namespace DuckHunt.Models
             dispatcher = Dispatcher.CurrentDispatcher;
         }
 
+        public Unit() { }
+
+        public abstract Unit CreateInstance(MoveContainer mc, DrawContainer dc, BehaviourFactory bf, MainWindow window);
+
         public Rectangle InitUnit()
         {
             gotShot = false;

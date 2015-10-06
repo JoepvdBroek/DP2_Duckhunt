@@ -10,6 +10,8 @@ namespace DuckHunt
 {
     class Duck : Unit
     {
+        public Duck() { }
+
         public Duck(MoveContainer mc, DrawContainer dc, BehaviourFactory bf, MainWindow window) : base(mc, dc, bf, window)
         {
             //rnd = new Random();
@@ -22,6 +24,10 @@ namespace DuckHunt
             InitUnit();
         }
 
-        
+        public override Unit CreateInstance(MoveContainer mc, DrawContainer dc, BehaviourFactory bf, MainWindow window)
+        {
+            return new Duck(mc, dc, bf, window);
+        }
+    
     }
 }

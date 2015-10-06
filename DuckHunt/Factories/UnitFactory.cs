@@ -2,17 +2,20 @@
 using DuckHunt.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DuckHunt.Factories
 {
     class UnitFactory
     {
         private static UnitFactory instance;
+        private Dictionary<string, Unit> units;
 
-        private UnitFactory() { }
+        private UnitFactory()
+        {
+            units = new Dictionary<string, Unit>();
+            units.Add("Duck", new Duck());
+            units.Add("Crow", new Crow());
+        }
 
         public static UnitFactory Instance
         {
@@ -28,15 +31,12 @@ namespace DuckHunt.Factories
 
         public Unit CreateUnit(string name, MoveContainer mc, DrawContainer dc, BehaviourFactory bf, MainWindow window)
         {
-            switch (name)
+            if (units.ContainsKey(name))
             {
-                case "Duck":
-                    return new Duck(mc, dc, bf, window);
-                case "Crow":
-                    return new Crow(mc, dc, bf, window);
-                default:
-                    return new Duck(mc, dc, bf, window);
+                return units[name].CreateInstance(mc, dc, bf, window);
             }
+
+            throw new Exception("Unit with the name "+ name +" Not Found");
         }
     }
 }

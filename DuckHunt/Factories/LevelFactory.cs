@@ -1,18 +1,14 @@
-﻿using System;
+﻿using DuckHunt.Controllers;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DuckHunt.Controllers;
-using DuckHunt.Levels;
 
 namespace DuckHunt.Factories
 {
     class LevelFactory
     {
         private static LevelFactory instance;
+        private Dictionary<int, BaseLevelState> levelMap = new Dictionary<int, BaseLevelState>();
 
-        private LevelFactory() { }
+        private LevelFactory() {}
 
         public static LevelFactory Instance
         {
@@ -26,25 +22,23 @@ namespace DuckHunt.Factories
             }
         }
 
+        public void addLevelToMap(BaseLevelState level)
+        {
+            levelMap.Add(level.id, level);
+        }
+
         public BaseLevelState NextLevel(BaseLevelState currentLevel)
         {
             if (currentLevel == null) return null;
 
-            switch (currentLevel.id)
+            //last level
+            if(levelMap.Count == currentLevel.id)
             {
-                case 0:
-                    return new Level1();
-                case 1:
-                    return new Level2();
-                case 2:
-                    return new Level3();
-                case 3:
-                    return new Level4();
-                case 4:
-                    return new Level5();
-                default:
-                    //finished
-                    return null;
+                return null;
+            }
+            else
+            {
+                return levelMap[currentLevel.id + 1]/*.CreateInstance()*/;
             }
 
         }

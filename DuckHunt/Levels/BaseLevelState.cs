@@ -1,17 +1,13 @@
 ﻿using DuckHunt.Factories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
+using System;
+using DuckHunt.Levels;
 
 namespace DuckHunt.Controllers
 {
     class BaseLevelState
     {
         private GameController gameController;
-        protected LevelFactory levelFactory;
         public int id { get; set; }
         public Brush color { get; set; }
         public float velocity { get; set; }
@@ -21,7 +17,13 @@ namespace DuckHunt.Controllers
         {
             id = 0;
             gameController = gc;
-            levelFactory = LevelFactory.Instance;
+
+            Level1.AddLevelToFactory();
+            Level2.AddLevelToFactory();
+            Level3.AddLevelToFactory();
+            Level4.AddLevelToFactory();
+            Level5.AddLevelToFactory();
+
         }
 
         //constructor for levels
@@ -48,7 +50,7 @@ namespace DuckHunt.Controllers
 
         public void NextLevel()
         {
-            BaseLevelState nextLevel = levelFactory.NextLevel(this);
+            BaseLevelState nextLevel = LevelFactory.Instance.NextLevel(this);
 
             if(nextLevel == null)
             {

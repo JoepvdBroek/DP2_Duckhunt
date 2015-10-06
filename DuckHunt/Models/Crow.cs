@@ -1,14 +1,14 @@
-﻿using DuckHunt.Behaviours;
-using DuckHunt.Containers;
+﻿using DuckHunt.Containers;
 using DuckHunt.Factories;
-using System;
 using System.Windows.Media;
 using System.Windows.Threading;
+using System;
 
 namespace DuckHunt.Models
 {
     class Crow : Unit
     {
+        public Crow() { }
 
         public Crow(MoveContainer mc, DrawContainer dc, BehaviourFactory bf, MainWindow window) : base(mc, dc, bf, window)
         {
@@ -23,6 +23,11 @@ namespace DuckHunt.Models
             dispatcher = Dispatcher.CurrentDispatcher;
 
             InitUnit();
+        }
+
+        public override Unit CreateInstance(MoveContainer mc, DrawContainer dc, BehaviourFactory bf, MainWindow window)
+        {
+            return new Crow(mc, dc, bf, window);
         }
     }
 }
