@@ -20,6 +20,7 @@ namespace DuckHunt
             y = rnd.Next(26, 300);
             color = Brushes.PowderBlue;
             velocity = 1.0F;
+            heading = 1.5F;
 
             InitUnit();
         }

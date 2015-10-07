@@ -70,17 +70,14 @@ namespace DuckHunt
             }
             else //Finished last level
             {
-                window.setFinishedScore(score.ToString());
-                window.ShowFinishedLabel();
-                t2.Abort();
+                Finish();
             }
         }
 
-        public void UpScore(int i)
+        public void UpdateScore(int i)
         {
             window.setScoreLabel(i.ToString());
         }
-
 
         public void NextLevel()
         {
@@ -89,14 +86,15 @@ namespace DuckHunt
 
         public void Finish()
         {
-            //finish game.
             running = false;
+            window.setFinishedScore(score.ToString());
+            window.ShowFinishedLabel();
+            t2.Abort();
         }
 
         public void StopGame()
         {
             running = false;
-            Console.WriteLine("stop Game");
             Environment.Exit(0);
         }
 
@@ -121,7 +119,7 @@ namespace DuckHunt
                 moveContainer.MoveUnits(deltaTime);
                 Thread.Sleep(8);
                 drawContainer.DrawUnits(deltaTime);
-                UpScore(score);
+                UpdateScore(score);
 
                 deltaTime = timer.GetTicks();
                 

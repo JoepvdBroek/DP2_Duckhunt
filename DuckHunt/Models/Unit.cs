@@ -25,7 +25,7 @@ namespace DuckHunt.Models
         public float y { get; set; }
         public Brush color { get; set; }
         public float velocity { get; set; }
-        public bool gotShot { get; set; }
+        public int gotShot { get; set; }
         public int score { get; set; }
 
         protected MainWindow window;
@@ -45,8 +45,8 @@ namespace DuckHunt.Models
             behaviourFactory = bf;
             this.window = window;
            
-            moveBehaviour = bf.CreateMoveBehaviour(this);
-            drawBehaviour = bf.CreateDrawBehaviour(this);
+            moveBehaviour = behaviourFactory.CreateMoveBehaviour(this, "flying");
+            drawBehaviour = behaviourFactory.CreateDrawBehaviour(this);
             moveContainer.Add(moveBehaviour);
             drawContainer.Add(drawBehaviour);
 
@@ -58,9 +58,16 @@ namespace DuckHunt.Models
 
         public abstract Unit CreateInstance(MoveContainer mc, DrawContainer dc, BehaviourFactory bf, MainWindow window);
 
+        public void changeMoveBehaviour(string behaviour)
+        {
+            moveContainer.Remove(moveBehaviour);
+            moveBehaviour = behaviourFactory.CreateMoveBehaviour(this, behaviour);
+            moveContainer.Add(moveBehaviour);
+        }
+
         public Rectangle InitUnit()
         {
-            gotShot = false;
+            gotShot = 0;
             rect = new Rectangle
             {
                 Fill = color,
@@ -81,36 +88,6 @@ namespace DuckHunt.Models
             drawContainer.Remove(drawBehaviour);
         }
 
-        //public void MoveRect(Rectangle rect, int velocity)
-        //{
-        //    double pos = Canvas.GetLeft(rect);
-        //    Canvas.SetLeft(rect, pos + velocity);
-        //}
-
-        //public void Move()
-        //{
-        //    x++;
-        //    if (x > 750)
-        //    {
-        //        x = -size;
-        //    }
-
-        //    Draw();
-        //}
-
-        //public void Draw()
-        //{
-        //    Thread.Sleep(8);
-        //    if (dispatcher.CheckAccess())
-        //    {
-        //        rect.Margin = new Thickness(x, y, size, size);
-        //    }
-        //    else
-        //    {
-        //        dispatcher.Invoke(() => rect.Margin = new Thickness(x, y, size, size));
-        //    }
-        //}
-
         protected void RestartUnit()
         {
             x = -size;
@@ -120,9 +97,11 @@ namespace DuckHunt.Models
 
         protected void getShot(object sender, RoutedEventArgs e)
         {
-            //Rectangle rect = sender as Rectangle;
-            //RestartUnit();
-            gotShot = true;
+            gotShot++;
+            if(gotShot == 1)
+            {
+                changeMoveBehaviour("falling");
+            }
         }
     }
 }

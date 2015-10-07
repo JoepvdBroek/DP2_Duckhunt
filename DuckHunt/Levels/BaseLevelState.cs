@@ -1,6 +1,5 @@
 ﻿using DuckHunt.Factories;
 using System.Windows.Media;
-using System;
 using DuckHunt.Levels;
 
 namespace DuckHunt.Controllers

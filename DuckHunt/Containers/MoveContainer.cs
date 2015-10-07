@@ -1,9 +1,4 @@
 ﻿using DuckHunt.Behaviours;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DuckHunt.Containers
 {
@@ -24,10 +19,15 @@ namespace DuckHunt.Containers
 
         public void MoveUnits(float deltaTime)
         {
-            foreach (Behaviour behavior in behaviours)
+            for (int i = 0; i < behaviours.Count; i++)
             {
-                behavior.Behave(deltaTime);
+                behaviours[i].Behave(deltaTime);
             }
+
+            //foreach (Behaviour behavior in behaviours)
+            //{
+            //    behavior.Behave(deltaTime);
+            //}
         }
     }
 }

@@ -26,10 +26,22 @@ namespace DuckHunt.Factories
             }
         }
 
-        internal MoveBehaviour CreateMoveBehaviour(Unit unit)
+        internal MoveBehaviour CreateMoveBehaviour(Unit unit, string behaviour)
         {
-            return new MoveBehaviour(unit);
+            if (behaviour.Equals("flying"))
+            {
+                return new FlyingMoveBehaviour(unit);
+            }
+            else if (behaviour.Equals("falling"))
+            {
+                return new FallingMoveBehaviour(unit);
+            }
+            else
+            { 
+                throw new Exception("MoveBehaviour with the name " + behaviour + " Not Found");
+            }
         }
+
         internal DrawBehaviour CreateDrawBehaviour(Unit unit)
         {
             return new DrawBehaviour(unit);

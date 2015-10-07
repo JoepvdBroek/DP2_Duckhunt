@@ -18,6 +18,7 @@ namespace DuckHunt.Models
             y = rnd.Next(26, 300);
             color = Brushes.Black;
             velocity = 1.0F;
+            heading = 1.5F;
 
             this.window = window;
             dispatcher = Dispatcher.CurrentDispatcher;

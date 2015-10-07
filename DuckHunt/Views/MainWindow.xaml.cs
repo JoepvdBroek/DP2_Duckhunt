@@ -29,7 +29,7 @@ namespace DuckHunt
         public MainWindow()
         {
             InitializeComponent();
-            c = new GameController(this);
+            
         }
 
         private void dragable(object sender, MouseButtonEventArgs e)
@@ -92,6 +92,12 @@ namespace DuckHunt
             }
 
             
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            c = new GameController(this);
+            startButton.Visibility = Visibility.Hidden;
         }
     }
 }
