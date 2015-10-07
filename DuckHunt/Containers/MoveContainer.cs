@@ -4,6 +4,12 @@ namespace DuckHunt.Containers
 {
     class MoveContainer : Container
     {
+        public MoveContainer()
+        {
+            FlyingMoveBehaviour.AddBehaviourToFactory();
+            FallingMoveBehaviour.AddBehaviourToFactory();
+        }
+
         public void Add(MoveBehaviour _moveBehaviour)
         {
             behaviours.Add(_moveBehaviour);

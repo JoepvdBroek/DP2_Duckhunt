@@ -26,6 +26,11 @@ namespace DuckHunt.Models
             InitUnit();
         }
 
+        public static void AddUnitToFactory()
+        {
+            UnitFactory.Instance.addUnitToMap("Crow", new Crow());
+        }
+
         public override Unit CreateInstance(MoveContainer mc, DrawContainer dc, BehaviourFactory bf, MainWindow window)
         {
             return new Crow(mc, dc, bf, window);

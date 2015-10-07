@@ -1,29 +1,12 @@
 ﻿using DuckHunt.Models;
 using System.Windows;
+using System;
+using DuckHunt.Factories;
 
 namespace DuckHunt.Behaviours
 {
-    class DrawBehaviour : Behaviour
+    interface DrawBehaviour : Behaviour
     {
-        private Unit unit;
-
-        public DrawBehaviour(Unit unit)
-        {
-            this.unit = unit;
-        }
-
-        public void Behave(float deltaTime)
-        {
-            if (unit.dispatcher.CheckAccess())
-            {
-                unit.rect.Margin = new Thickness(unit.x, unit.y, unit.size, unit.size);
-            }
-            else
-            {
-                unit.dispatcher.Invoke(() => unit.rect.Margin = new Thickness(unit.x, unit.y, unit.size, unit.size));
-            }
-            //Thread.Sleep(4);
-
-        }
+        DrawBehaviour CreateInstance(Unit unit);
     }
 }

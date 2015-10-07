@@ -1,4 +1,6 @@
-﻿using DuckHunt.Models;
+﻿using System;
+using DuckHunt.Models;
+using DuckHunt.Factories;
 
 namespace DuckHunt.Behaviours
 {
@@ -10,6 +12,8 @@ namespace DuckHunt.Behaviours
         {
             this.unit = unit;
         }
+
+        public FlyingMoveBehaviour() { }
 
         public void Behave(float deltaTime)
         {
@@ -24,6 +28,16 @@ namespace DuckHunt.Behaviours
                 unit.x = -unit.size;
             }
 
+        }
+
+        public static void AddBehaviourToFactory()
+        {
+            BehaviourFactory.Instance.addMoveBehaviourToMap("flying", new FlyingMoveBehaviour());
+        }
+
+        public MoveBehaviour CreateInstance(Unit unit)
+        {
+            return new FlyingMoveBehaviour(unit);
         }
     }
 }

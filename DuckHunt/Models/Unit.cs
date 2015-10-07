@@ -46,7 +46,7 @@ namespace DuckHunt.Models
             this.window = window;
            
             moveBehaviour = behaviourFactory.CreateMoveBehaviour(this, "flying");
-            drawBehaviour = behaviourFactory.CreateDrawBehaviour(this);
+            drawBehaviour = behaviourFactory.CreateDrawBehaviour(this, "flying");
             moveContainer.Add(moveBehaviour);
             drawContainer.Add(drawBehaviour);
 

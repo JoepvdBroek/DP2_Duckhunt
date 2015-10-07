@@ -25,6 +25,11 @@ namespace DuckHunt
             InitUnit();
         }
 
+        public static void AddUnitToFactory()
+        {
+            UnitFactory.Instance.addUnitToMap("Duck", new Duck());
+        }
+
         public override Unit CreateInstance(MoveContainer mc, DrawContainer dc, BehaviourFactory bf, MainWindow window)
         {
             return new Duck(mc, dc, bf, window);

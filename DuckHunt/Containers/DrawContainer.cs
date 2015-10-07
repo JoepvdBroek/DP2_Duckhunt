@@ -9,6 +9,11 @@ namespace DuckHunt.Containers
 {
     class DrawContainer : Container
     {
+        public DrawContainer()
+        {
+            FlyingDrawBehaviour.AddBehaviourToFactory();
+        }
+
         public void Add(DrawBehaviour _drawBehaviour)
         {
             behaviours.Add(_drawBehaviour);

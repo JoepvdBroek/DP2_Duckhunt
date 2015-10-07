@@ -42,6 +42,9 @@ namespace DuckHunt
             currentLevel = new BaseLevelState(this); //maak level 1 aan
             currentLevel.NextLevel();
 
+            Crow.AddUnitToFactory();
+            Duck.AddUnitToFactory();
+
             Unit unit1 = unitFactory.CreateUnit("Duck", moveContainer, drawContainer, behaviourFactory, window);
             units.Add(unit1);
             //Thread t = new Thread(new ThreadStart(gameLoop));

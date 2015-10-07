@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="Behaviours\Behaviour.cs" />
     <Compile Include="Behaviours\DrawBehaviour.cs" />
+    <Compile Include="Behaviours\FlyingDrawBehaviour.cs" />
     <Compile Include="Behaviours\FlyingMoveBehaviour.cs" />
     <Compile Include="Behaviours\MoveBehaviour.cs" />
     <Compile Include="Behaviours\FallingMoveBehaviour.cs" />

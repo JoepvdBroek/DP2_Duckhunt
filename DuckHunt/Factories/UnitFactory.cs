@@ -8,14 +8,9 @@ namespace DuckHunt.Factories
     class UnitFactory
     {
         private static UnitFactory instance;
-        private Dictionary<string, Unit> units;
+        private Dictionary<string, Unit> unitMap = new Dictionary<string, Unit>();
 
-        private UnitFactory()
-        {
-            units = new Dictionary<string, Unit>();
-            units.Add("Duck", new Duck());
-            units.Add("Crow", new Crow());
-        }
+        private UnitFactory() { }
 
         public static UnitFactory Instance
         {
@@ -29,11 +24,16 @@ namespace DuckHunt.Factories
             }
         }
 
+        public void addUnitToMap(String name, Unit unit)
+        {
+            unitMap.Add(name, unit);
+        }
+
         public Unit CreateUnit(string name, MoveContainer mc, DrawContainer dc, BehaviourFactory bf, MainWindow window)
         {
-            if (units.ContainsKey(name))
+            if (unitMap.ContainsKey(name))
             {
-                return units[name].CreateInstance(mc, dc, bf, window);
+                return unitMap[name].CreateInstance(mc, dc, bf, window);
             }
 
             throw new Exception("Unit with the name "+ name +" Not Found");
