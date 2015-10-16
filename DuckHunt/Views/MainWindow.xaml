@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DuckHunt"
         mc:Ignorable="d"
-        Title="Duck Hunt" Width="700" Height="425" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" BorderThickness="0">
+        Title="Duck Hunt" Width="720" Height="440" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" BorderThickness="0" Closing="Window_Closing">
     <Canvas Name="canvas" Width="700" Height="425" VerticalAlignment="Bottom">
-        <Canvas Width="700" Height="25" VerticalAlignment="Top" Background="PowderBlue" MouseLeftButtonDown="dragable"/>
-        <Canvas Width="25" Height="25" Canvas.Left="675" VerticalAlignment="Top" Background="Black" MouseLeftButtonDown="closeGame"/>
+        <!--<Canvas Width="700" Height="25" VerticalAlignment="Top" Background="PowderBlue" MouseLeftButtonDown="dragable"/>
+        <Canvas Width="25" Height="25" Canvas.Left="675" VerticalAlignment="Top" Background="Black" MouseLeftButtonDown="closeGame"/>-->
 
         <Button x:Name="startButton" Content="Start game" Canvas.Left="279" Canvas.Top="184" Width="134" Height="68" FontSize="24" Click="StartButton_Click"/>
 

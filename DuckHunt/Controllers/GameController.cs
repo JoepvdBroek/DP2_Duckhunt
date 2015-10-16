@@ -98,6 +98,7 @@ namespace DuckHunt
         public void StopGame()
         {
             running = false;
+            t2.Abort();
             Environment.Exit(0);
         }
 
@@ -110,7 +111,7 @@ namespace DuckHunt
 
             while (running)
             {
-                if (counter > 1000)
+                if (counter > 10000)
                 {
                     counter = 0;
                     NextLevel();
@@ -120,7 +121,6 @@ namespace DuckHunt
                 timer.Reset();
 
                 moveContainer.MoveUnits(deltaTime);
-                Thread.Sleep(8);
                 drawContainer.DrawUnits(deltaTime);
                 UpdateScore(score);
 

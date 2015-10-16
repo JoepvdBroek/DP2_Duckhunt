@@ -99,5 +99,13 @@ namespace DuckHunt
             c = new GameController(this);
             startButton.Visibility = Visibility.Hidden;
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if( c != null)
+            {
+                c.StopGame();
+            }
+        }
     }
 }
